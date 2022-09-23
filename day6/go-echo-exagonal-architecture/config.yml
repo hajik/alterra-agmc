@@ -1,0 +1,12 @@
+appname: myapp
+port: :8000
+
+db:
+    use: mysql
+    mysql:
+        -   enabled: true
+            host: localhost
+            port: 3306
+            username: root
+            password: MyPassword@123
+            database: mb_altera
