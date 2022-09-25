@@ -26,6 +26,11 @@ Another common term used during software development is the domain layer or doma
 ### Other
 - [Configor v1.2.0](https://github.com/jinzhu/configor)
 
+### reference for mongodb on golang
+https://blog.logrocket.com/how-to-use-mongodb-with-go/
+https://www.digitalocean.com/community/tutorials/how-to-use-go-with-mongodb-using-the-mongodb-go-driver
+https://dasarpemrogramangolang.novalagung.com/A-mongodb.html
+
 
 ```sh
 $ git clone https://github.com/javierlecca/go-echo-exagonal-architecture.git
