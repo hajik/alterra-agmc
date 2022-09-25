@@ -26,10 +26,18 @@ func (c *Controller) NewUserController() {
 }
 
 func (c *Controller) ApiGroup(g *echo.Group, e *echo.Echo) {
-	//user
 	c.NewUserController()
+
+	// auth
 	g.POST("/login", c.user.Login)
 	//society
 	c.NewsocietyController()
 	g.GET("/societies", c.society.ListAll, middleware.JWTWithConfig(m.JWTConfig()))
+
+	// user
+	g.Use(middleware.JWTWithConfig(m.JWTConfig()))
+	g.GET("/user/list", c.user.ListAll)
+	g.POST("/user/store/one", c.user.StoreOne)
+	g.PUT("/user/update/:name", c.user.Update)
+	g.DELETE("/user/delete/:name", c.user.Delete)
 }

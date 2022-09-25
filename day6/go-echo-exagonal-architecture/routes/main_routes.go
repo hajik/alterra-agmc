@@ -14,9 +14,8 @@ func New() *echo.Echo {
 	logger.DefaultLogger(e)
 	// declare controller
 	c := controller.Controller{}
-	// create groups
+	// create groups api
 	apiGroup := e.Group("/api")
-	// set group routes
 	c.ApiGroup(apiGroup, e)
 
 	return e

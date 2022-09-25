@@ -30,3 +30,53 @@ func (u *UserService) Login(c echo.Context) error {
 	}
 	return c.JSON(http.StatusOK, user.Token)
 }
+
+func (u *UserService) ListAll(c echo.Context) error {
+	req := requests.UserListAll{}
+	c.Bind(&req)
+
+	result, err := u.orm.ListAll(&req)
+	if err != nil {
+		return err
+	}
+
+	u.resp.Status = "Success"
+	u.resp.Data = result
+
+	return c.JSON(http.StatusOK, u.resp)
+}
+
+func (u *UserService) StoreOne(c echo.Context) error {
+	req := requests.UserStoreOne{}
+	c.Bind(&req)
+	err := u.orm.StoreOne(&req)
+	if err != nil {
+		return err
+	}
+
+	u.resp.Status = "Success"
+	u.resp.Data = req
+	return c.JSON(http.StatusOK, u.resp)
+}
+
+func (u *UserService) Update(c echo.Context) error {
+	req := requests.UserUpdate{}
+	c.Bind(&req)
+	err := u.orm.Update(&req)
+	if err != nil {
+		return err
+	}
+	u.resp.Status = "Success"
+	u.resp.Data = req
+	return c.JSON(http.StatusOK, u.resp)
+}
+
+func (u *UserService) Delete(c echo.Context) error {
+	req := requests.UserDelete{}
+	c.Bind(&req)
+	err := u.orm.Delete(req.Name)
+	if err != nil {
+		return err
+	}
+	return c.JSON(http.StatusOK, "Success")
+}

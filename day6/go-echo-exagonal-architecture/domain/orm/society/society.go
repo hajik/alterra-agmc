@@ -19,7 +19,6 @@ type SocietyOrm struct {
 func (s *SocietyOrm) NewsocietyOrm() {
 	g := _g.Gorm{}
 	s.db = g.NewDb()[0]
-
 }
 
 func (s *SocietyOrm) GetAll() ([]*society.Society, error) {
